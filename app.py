@@ -1,12 +1,21 @@
 from flask import Flask, jsonify, request, send_from_directory
 from flask_cors import CORS
 import requests
+import json
+import os
 
 app = Flask(__name__)
 CORS(app)
 
-# Configura tu API KEY de Google Cloud
-GOOGLE_API_KEY = "TU_API_KEY_AQUI"
+# Configura tu API KEY de Google Cloud desde config.json
+CONFIG_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'config', 'config.json')
+try:
+    with open(CONFIG_PATH, 'r') as f:
+        config = json.load(f)
+        GOOGLE_API_KEY = config.get("GOOGLE_MAPS_KEY", "TU_API_KEY_AQUI")
+except Exception as e:
+    print(f"Error al cargar config.json: {e}")
+    GOOGLE_API_KEY = "TU_API_KEY_AQUI"
 
 def obtener_datos_catastro(rc):
     """

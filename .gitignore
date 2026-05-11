@@ -1,0 +1,27 @@
+# Configuración del proyecto
+config/
+
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Entornos Virtuales adicionales
+venv/
+ENV/
+env/
+.venv/
+
+# Caches de dependencias y tests
+.pytest_cache/
+.tox/
+.coverage
+htmlcov/
+
+# Logs
+*.log
+
+# OS generated files
+.DS_Store
+Thumbs.db
